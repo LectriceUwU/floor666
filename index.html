@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Floor 666 – A Little Bit of Everything</title>
+  <meta name="description" content="Floor 666 – A Little Bit of Everything: an unofficial, community-made Despot's Game mod with an entirely new labyrinthine floor, 100+ new mutations, heroes, King of the Hill features and more.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0e0a19">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Floor 666 – A Little Bit of Everything">
+  <meta property="og:description" content="The first-ever Despot's Game mod. A little bit of everything, a whole lot of chaos. Unofficial and community-made.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%230b0a21'/%3E%3Cpath fill='%23c81a34' d='M1 4h2v1H1zM2 5h3v1H2zM3 6h4v1H3zM4 7h3v1H4zM13 4h2v1h-2zM11 5h3v1h-3zM9 6h4v1H9zM9 7h3v1H9zM6 10h4v1H6zM5 11h6v1H5z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/features.js" defer></script>
+  <script src="js/music.js" defer></script>
+  <script src="js/circuit.js" defer></script>
+  <script src="js/despot.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Background: wall, circuit traces and the electricity running behind the page (drawn by circuit.js) -->
+  <div class="bg bg--back" aria-hidden="true">
+    <canvas id="bg-wall"></canvas>
+    <canvas id="bg-traces"></canvas>
+    <canvas id="bg-back"></canvas>
+    <canvas id="bg-back-glow" class="glow"></canvas>
+  </div>
+
+  <div class="page">
+    <main class="wrap" id="main">
+      <section class="hero" id="intro" aria-labelledby="title">
+        <p class="kicker">Unofficial Despot's Game mod</p>
+        <h1 class="title" id="title">
+          <span class="title-main" data-text="Floor 666">Floor <em>666</em></span>
+          <span class="title-sub">A Little <span class="ttl-swap" data-alt="Much">Bit</span> of Everything</span>
+        </h1>
+        <p class="lead">The first-ever Despot's Game mod is here! A little bit of everything, a whole lot of chaos.</p>
+        <p class="intro">This mod introduces new content, mechanics and improvements, but its main attraction is <strong>Floor 666</strong>, an entirely new and exclusive floor that replaces the original Easy mode.</p>
+        <p class="note">
+          <span class="note-label">Note</span>
+          <span>Since other game modes interact with King of the Hill (KoTH), the following features are exclusive to Floor 666 unless otherwise stated.</span>
+        </p>
+      </section>
+
+      <section class="download" id="download" aria-labelledby="download-title">
+        <h2 class="sr-only" id="download-title">Download</h2>
+        <div class="dl-socket">
+          <button class="dl-btn" id="dl-btn" type="button">
+            <span class="dl-label">
+              <span class="dl-a">Download Mod</span>
+              <span class="dl-b" aria-hidden="true">Coming Soon</span>
+            </span>
+          </button>
+        </div>
+        <p class="dl-term"><span id="dl-term-text" aria-hidden="true"></span></p>
+        <p class="sr-only" id="dl-status" role="status"></p>
+      </section>
+
+      <!-- Feature sections are generated from js/features.js -->
+      <div id="features"></div>
+      <noscript><p class="noscript">Enable JavaScript to see the full list of features.</p></noscript>
+
+      <section class="watching" id="watching" aria-labelledby="watching-title">
+        <p class="kicker kicker--dim">One Last Thing...</p>
+        <div class="despot-screen" id="despot-screen">
+          <canvas id="despot-face" width="40" height="20" aria-hidden="true"></canvas>
+        </div>
+        <h2 class="watching-title" id="watching-title">Despot Is Always Watching.</h2>
+        <p class="watching-text">You may have discovered new powers, recruited extraordinary allies and survived impossible challenges, but don't get too comfortable. Despot has never taken his eyes off you.</p>
+      </section>
+    </main>
+
+    <footer class="foot wrap">
+      <p class="foot-mark">Floor 666 – A Little Bit of Everything</p>
+      <p>Floor 666 is an unofficial, community-made mod. Not affiliated with or endorsed by Konfa Games or tinyBuild. Despot's Game belongs to its respective owners.</p>
+    </footer>
+  </div>
+
+  <!-- Foreground: the machine frame around the screen and its electricity -->
+  <div class="bg bg--front" aria-hidden="true">
+    <canvas id="bg-frame"></canvas>
+    <canvas id="bg-front"></canvas>
+    <canvas id="bg-front-glow" class="glow"></canvas>
+  </div>
+
+  <header class="hud" id="hud">
+    <nav class="hud-bar" aria-label="Sections">
+      <a class="hud-brand" href="#intro" aria-label="Floor 666, back to the top"><span>F</span>666</a>
+      <button class="hud-btn hud-menu" id="hud-menu" type="button" aria-expanded="false" aria-controls="hud-links">Menu</button>
+      <ul class="hud-links" id="hud-links">
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+      <button class="hud-btn hud-music" id="hud-music" type="button" aria-pressed="true" aria-label="Background music" title="Music: on">
+        <svg class="ico-note" viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges">
+          <path fill="currentColor" d="M5 2h9v2H5zM5 4h1v7H5zM13 4h1v6h-1zM2 10h4v3H2zM10 9h4v3h-4z"/>
+        </svg>
+        <svg class="ico-eq" viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges">
+          <rect x="1" y="3" width="2" height="11" fill="currentColor"/>
+          <rect x="5" y="3" width="2" height="11" fill="currentColor"/>
+          <rect x="9" y="3" width="2" height="11" fill="currentColor"/>
+          <rect x="13" y="3" width="2" height="11" fill="currentColor"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Floor 666 theme ("Duneless Drift"), on by default (see js/music.js) -->
+  <audio id="bgm" src="audio/duneless-drift.m4a" loop preload="auto"></audio>
+</body>
+</html>
